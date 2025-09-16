@@ -1,0 +1,67 @@
+<!-- 3)  accept data from user using input fields 
+      firstName LastName age 
+	  
+	  store data in Object format in function 
+	  and convert into JSON format 
+	  
+	  and display data in table format from JSON format data 
+	   -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+</head>
+<body>
+    First Name: <input type="text" id="fname" placeholder="Enter the first name"><br><br>
+    Last Name:<input type="text" id="lname" placeholder="Enter the Last Name"><br><br>
+    Age: <input type="number" id="age" placeholder="Enter the Age"><br><br>
+
+    <button onclick="storeDataInObject()">Save</button><br><br>
+    <table id="tableArea" border="1" cellpadding="10"></table>
+
+    <script>
+        let isHeaderCreated = false;
+
+        function storeDataInObject() {
+        let fname = document.getElementById("fname").value.trim();
+        let lname = document.getElementById("lname").value.trim();
+        let age = document.getElementById("age").value.trim();
+        let table = document.getElementById("tableArea");
+        
+        const obj = {
+            First:fname,
+            Last:lname,
+            Age:age
+        };
+        const JSONObj = JSON.stringify(obj);
+        console.log("Jsondta",JSONObj);
+        //console.log(obj);
+
+        const jsondata = JSON.parse(JSONObj);
+
+        // Create header only once
+        if (!isHeaderCreated) {
+        let header = table.insertRow();
+        header.innerHTML = `
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+        `;
+        isHeaderCreated = true;
+        }
+
+         // Insert row from JSON data
+        let row = table.insertRow()
+        row.innerHTML=` 
+                <tr>
+                    <td> ${jsondata.First}</td>
+                    <td> ${jsondata.Last}</td>
+                    <td> ${jsondata.Age}</td>
+                </tr>`
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- 1) use browser callback functions
+     setInterval
+	 clearInterval
+	 setTimeout -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+</head>
+<body>
+    <p id="count">Conter:0</p>
+    <script>
+    // 1. setTimeout - runs once after 3 seconds
+
+    setTimeout(() => {
+        alert("This is setTimeout() after 3 seconds");
+    }, 3000);
+
+    // 2. setInterval - runs every second
+    let cnt = 0;
+    const counterDisplay = document.getElementById("count");
+
+    const intervalId = setInterval(()=>{
+        cnt++;
+        counterDisplay.textContent = cnt;
+
+        // 3. clearInterval - stop interval after 5 seconds
+        if(cnt>5){
+            clearInterval(intervalId);
+            alert("Cont stoped at 5");
+        }
+    },1000);
+
+    </script>
+</body>
+</html>
