@@ -1,0 +1,40 @@
+<!-- 1.
+Display italics hello in another <p> tag
+Distplay underline hello in third <p> tag -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+    <!-- <style>
+        #p1{
+            text-decoration:underline;
+            font-style: italic;
+        }
+    </style> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                let v = $("#p1").text();
+                //console.log(v);
+                $("#p2").text(v).css("font-style","italic");
+                
+            })
+            $("#btn").click(function(){
+                let v = $("#p1").text();
+                $("#p3").text(v).css("text-decoration","underline");
+            })
+        })
+    </script>
+</head>
+<body>
+    <p id="p1">Hello</p><br>
+    <button id="btn">Change Text decoration</button><br>
+    <p id="p2"></p><br>
+    <p id="p3"></p><br>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!-- 4. Using Jquery animate() API , write a div that has a nice quote in a 
+nice font , color and size . Run the scroller from left to right 4 times ,
+then R to L -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4</title>
+    <style>
+        #d1{
+            font-style: italic;
+            color:blue;
+            font-size: 15px;
+            font-weight: bold;
+            position: absolute;
+            white-space: nowrap;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            let screenWidth = $(window).width();
+            let textWidth = $("#d1").width();
+            let leftWidth = screenWidth - textWidth;
+
+            let count = 0;
+
+            function moveRight(){
+                if(count<4){
+                    $("#d1").animate({left:leftWidth},5000,moveLeft)
+                }else{
+                    moveLeftFinal();
+                }
+            }
+            function moveLeft(){
+                count++;
+                $("#d1").animate({left:0},5000,moveRight)
+            }
+
+            function moveLeftFinal(){
+                $("#d1").animate({left:0},5000)
+            }
+
+            moveRight();
+        });
+    </script>
+ </head>
+ <body>
+    <div id="d1">Don't Stop When You are Tired. Stop When You are Done</div>
+ </body>
+ </html>

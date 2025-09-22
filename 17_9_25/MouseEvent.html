@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Event</title>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            background-color: black;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#d1").mouseover( function(){
+                $("#d1").css("background-color","cyan")
+            }
+            )
+        });
+
+        $(document).ready(function(){
+            $("#d1").mouseout(function(){
+                $("#d1").css("background-color","black")
+            })
+        });
+
+        $(document).ready(function(){
+            $("#d1").dblclick(function(){
+                $("#d1").css("background-color","orange")
+            })
+        });
+    </script>
+</head>
+<body>
+    <div id="d1"></div>
+</body>
+</html>

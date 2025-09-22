@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 1 - Using Promises</title>
+</head>
+<body>
+  <h1>Display File Content using AJAX with Promises</h1>
+  <button id="btn">Show data</button>
+  <p id="id1"></p>
+
+  <script>
+    function getFileData(filename) {
+      return new Promise(function(resolve, reject) {
+        let request = new XMLHttpRequest();
+        request.open("GET", filename);
+
+        request.onload = function () {
+          if (request.status === 200) {
+            resolve(request.responseText);
+          } else {
+            reject("Page not found");
+          }
+        };
+
+        request.onerror = function () {
+          reject("Request failed");
+        };
+
+        request.send();
+      });
+    }
+
+    document.getElementById("btn").addEventListener("click", function () {
+      getFileData("data.txt")
+        .then(function(data) {
+          document.getElementById("id1").innerText = data;
+        })
+        .catch(function(error) {
+          document.getElementById("id1").innerText = error;
+        });
+    });
+  </script>
+</body>
+</html>

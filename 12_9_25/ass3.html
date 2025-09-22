@@ -1,0 +1,54 @@
+<!-- 2) Perform the form validations as shown in Lecture
+  for name and age 
+   and display error message if it not valid  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <label>Name: </label>
+        <input id="nm" type="text" name="name" placeholder="Enter the Name"><br><br>
+        <p class="errormessage" style="visibility:hidden; color: red;">Name must be given!</p>
+
+        <label>Age: </label>
+        <input id="ag" type="number" name="age" placeholder="Enter the Age"><br><br>
+        <p class="errormessage" style="visibility:hidden; color: red;">Age must be given!</p>
+        <p class="errormessage" style="visibility:hidden; color: red;">Age must be greater than 10!</p>
+
+
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        function validate(){
+            let name = document.getElementById("nm").value;
+            let age = document.getElementById("ag").value;
+
+            let isvalid = true;
+
+            if(name.trim() == ""){
+                document.getElementsByClassName("errormessage")[0].style.visibility = 'visible';
+                isvalid = false;
+            } else {
+                document.getElementsByClassName("errormessage")[0].style.visibility = 'hidden';
+            }
+
+            if(age.trim() == "") {
+                document.getElementsByClassName("errormessage")[1].style.visibility = 'visible';
+                isvalid = false;
+            }else if(age<10){
+                document.getElementsByClassName("errormessage")[1].style.visibility = 'hidden';
+                document.getElementsByClassName("errormessage")[2].style.visibility = 'visible';
+                isvalid = false;
+            }else {
+                document.getElementsByClassName("errormessage")[1].style.visibility = 'hidden';
+            }
+            return isvalid;
+        }
+    </script>
+</body>
+</html>

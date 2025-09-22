@@ -1,0 +1,36 @@
+p{
+    color: black;
+    background-color: rgb(120, 218, 120);
+    font-style:italic;
+    border:solid 2px navy;
+}
+input{
+    color: black;
+    background-color: pink;
+    font-style:oblique;
+    border:dotted 3px purple;
+}
+select{
+    color: black;
+    background-color:aliceblue;
+    font-style:italic;
+    border:dashed 2px ;
+}
+.moderate{
+    color: black;
+    background-color:bisque;
+    font-style:italic;
+    border:double 10px brown ;
+}
+.gaudy{
+    color: black;
+    background-color: rgb(197, 224, 98);
+    font-style:italic;
+    border:groove 10px ;
+}
+#id1{
+    color: black;
+    background-color: rgb(107, 188, 235);
+    font-style:italic;
+    border:ridge 10px ;
+}

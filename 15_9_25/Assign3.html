@@ -1,0 +1,37 @@
+<!-- 3) Take 1 Button and when user click on that button display 
+   How many times user click and display that count in <p> tag 
+
+	if user click 10 times then make that button readonly using style  -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assignment 3</title>
+        <style>
+        btn:disabled {
+            cursor: not-allowed;
+        }
+        </style>
+    </head>
+    <body>
+        <button id="btn" onclick="buttonClicked()">Click Me!</button>
+        <p id="cnt">0</p>
+
+        <script>
+           
+            let count = 0;
+            function buttonClicked() {
+                count++;
+                document.getElementById('cnt').textContent = count;
+
+                if(count >= 10) {
+                    let btn = document.getElementById('btn');
+                    btn.disabled = true;
+                }
+            }
+        </script>
+        
+    </body>
+    </html>

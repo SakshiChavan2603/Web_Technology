@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 1 - Using Promises</title>
+  <style>
+            table, th, td {
+                border: 2px solid black;
+                border-collapse: collapse;
+                padding: 8px;
+                text-align: center;
+            }
+  </style>
+</head>
+<body>
+  <h1>Display File Content using AJAX with Promises</h1>
+  <button id="btn">Show data</button>
+  <table id="tableArea"></table>
+
+  <script>
+    function getFileData(filename) {
+      return new Promise(function(resolve, reject) {
+        let request = new XMLHttpRequest();
+        request.open("GET", filename);
+
+        request.onload = function () {
+          if (request.status === 200) {
+            let jsondata = this.responseText;
+            let obj = JSON.parse(jsondata);
+            resolve(obj);
+          } else {
+            reject("Page not found");
+          }
+        };
+
+        request.onerror = function () {
+          reject("Request failed");
+        };
+
+        request.send();
+      });
+    }
+
+    let headerCreated = false;
+    document.getElementById("btn").addEventListener("click", function () {
+      getFileData("https://jsonplaceholder.typicode.com/posts")
+        .then(function(data) {
+          let table =  document.getElementById("tableArea");    
+                        if(!headerCreated){
+                            let header = table.insertRow();
+                            header.innerHTML = `<tr>
+                                                <th>User Id</th>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th>Body</th>
+                                                </tr>`
+                            headerCreated = true;
+                        }
+
+                        data.forEach(element => {
+                            let row = table.insertRow();
+                            row.innerHTML =`<tr>
+                                        <td>${element.userId}</td>
+                                        <td>${element.id}</td>
+                                        <td>${element.title}</td>
+                                        <td>${element.body}</td>
+                                        </tr>`;
+                        });
+        })
+        .catch(function(error) {
+          document.getElementById("id1").innerText = error;
+        });
+    });
+  </script>
+</body>
+</html>

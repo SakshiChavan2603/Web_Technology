@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>jQuery AJAX: load() & $.get() Demo (No direct xhr)</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    #container {
+      display: flex;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    .box {
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 45%;
+    }
+    button {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AJAX with jQuery: .load() & $.get() Demo</h1>
+  <div id="container">
+    <!-- Using .load() -->
+    <div class="box">
+      <h3>Using <code>.load()</code></h3>
+      <h3>Using .load()</h3>
+      <button id="btnLoad">Load Data</button>
+      <div id="resultLoad">Result will appear here...</div>
+    </div>
+
+    <!-- Using $.get() -->
+    <div class="box">
+      <h3>Using <code>$.get()</code></h3>
+      <h3>Using $.get()</h3>
+      <button id="btnGet">Get Data</button>
+      <div id="resultGet">Result will appear here...</div>
+    </div>
+  </div>
+
+  <script>
+    // Using .load() without direct xhr parameter
+    $("#btnLoad").click(function() {
+      $("#resultLoad").load("data.txt", function(response, status) {
+        if (status !== "success") {
+          $("#resultLoad").text("An error occurred while loading the file.");
+        }
+      });
+    });
+
+    // Using $.get() with done/fail
+    $("#btnGet").click(function() {
+      $.get("data.txt")
+        .done(function(data) {
+          $("#resultGet").text(data);
+        })
+        .fail(function() {
+          $("#resultGet").text("Failed to load data.");
+        });
+    });
+  </script>
+
+</body>
+</html>

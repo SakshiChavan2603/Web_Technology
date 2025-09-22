@@ -1,0 +1,100 @@
+<!-- 4)  Write 6 Function in Script 
+	
+	display 
+	addition 
+	subtraction
+	multiply
+	division 
+	calculate
+	
+	Accept data from user 
+		2 numbers and Which Operation they want to perform
+  according to choice call particular function and display result 
+using callback function concept 
+
+    calculate(n1 , n2 , mcallBack)
+		addition (n1 , n2 , display); -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4</title>
+   
+</head>
+<body>
+    <label>Enter Number 1:</label><br><br>
+    <input type="number" id="n1"><br><br>
+
+    <label>Enter Number 2:</label><br><br>
+    <input type="number" id="n2"><br><br>
+
+    <label>Select Operation: </label>
+        <select name="option" id="op">
+        <option value="add">Addition</option>
+        <option value="sub">Subtraction</option>
+        <option value="mul">Multiplication</option>
+        <option value="div">Division</option>
+        </select>
+
+        <button onclick="calculate()">Calculate</button>
+
+        <h2 id="result">0</h2>
+
+        <script>
+            function displayResult(result) {
+                document.getElementById('result').innerHTML = result;
+            }
+            function addition(n1, n2, callback) {
+                let result = n1 + n2;
+                callback(result);
+            }
+
+            function subtraction(n1, n2, callback) {
+                let result = n1 - n2;
+                callback(result);
+            }
+
+            function multiplication(n1, n2, callback) {
+                let result = n1 * n2;
+                callback(result);
+            }
+
+            function division(n1, n2, callback) {
+                let result = n1 / n2;
+                callback(result);
+            }
+
+            function calresult(n1, n2, operationfunction) {
+                operationfunction(n1, n2, displayResult)
+            }
+
+
+            function calculate() {
+                let n1 = parseFloat(document.getElementById('n1').value);
+                let n2 = parseFloat(document.getElementById('n2').value);
+                let op = document.getElementById('op').value;
+
+                switch(op) {
+                    case "add":
+                        calresult(n1, n2, addition);
+                        break;
+             
+                    case "sub":
+                        calresult(n1, n2, subtraction);
+                        break;
+                    
+                    case "mul":
+                        calresult(n1, n2, multiplication);
+                        break;
+
+                    case "div":
+                        calresult(n1, n2, division);
+                        break;
+                           }
+            }
+        </script>
+
+</body>
+</html>

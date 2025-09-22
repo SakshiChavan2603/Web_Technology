@@ -1,0 +1,34 @@
+div{
+    background-color: beige;
+    align-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 20px 20px 20px 30px;
+    
+    /* align-items: left; */
+    /* display: flex; */
+
+}
+#Res{
+    margin-left: 50%;
+    background-color: rgb(18, 172, 219);
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+
+}
+#sub{
+    background-color: rgb(115, 226, 115);
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+
+}
+h2{
+    text-align: center;
+    color: blue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}

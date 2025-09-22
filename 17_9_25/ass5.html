@@ -1,0 +1,28 @@
+<!-- printing text on multiple lines on your own. on click on <p></p> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Multiline Text on Paragraph Click</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#myPara").click(function(){
+      const multilineText = "Line 1: Hello!\nLine 2: How are you?\nLine 3: This is multiline text.";
+
+      // Replace \n with <br> to show multiple lines in HTML
+      const htmlText = multilineText.replace(/\n/g, "<br>");
+
+      // Set the html of paragraph to multiline text
+      $(this).html(htmlText);
+    });
+  });
+</script>
+</head>
+<body>
+
+<p id="myPara" style="cursor:pointer; border:1px solid #000; padding:10px; width:300px;">
+  Click me to print multiple lines of text!
+</p>
+</body>
+</html>

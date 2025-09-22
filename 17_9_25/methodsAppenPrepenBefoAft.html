@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jqueet Methods</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            //Append
+            $("#btn1").click(function(){
+                let a = $("#id1").val();
+                console.log(a);
+                //$("#id2").val(a);
+                $("#id2").append("<div>"+a+"<div>");
+                
+            })
+
+            //prepend
+            $("#btn2").click(function(){
+                let a = $("#id1").val();
+                $("#id2").prepend("<div>"+a+"<div>");
+            })
+
+            //Before
+            $("#btn3").click(function(){
+                let a = $("#id1").val();
+                $("#id3").before("<p>"+a+"<p>");
+            })
+
+            //After
+            $("#btn4").click(function(){
+                let a = $("#id1").val();
+                $("#id4").after("<p>"+a+"<p>");
+            })
+        })
+    </script>
+</head>
+<body>
+    Input Data:
+    <input type="text" id="id1" placeholder="Enter data"><br><br>
+    <button id="btn1">Append</button><br><br>
+    <button id="btn2">Prepend</button><br><br>
+    <button id="btn3">Before</button><br><br>
+    <button id="btn4">After</button><br><br>
+    Output:
+    <p id="id3">HELOO</p>
+    <div id="id2"></div>
+    <p id="id4">HOW are you?</p>
+
+</body>
+</html>

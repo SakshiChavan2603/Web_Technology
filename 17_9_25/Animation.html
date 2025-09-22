@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        div{
+            height: 50px;
+            width: 50px;
+            position: absolute;
+            background-color: aqua;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                $("#d1").animate(
+                    {
+                        "left":250,
+                        height:'300px',
+                        opacity:'0.3'
+                    },3000)
+            })
+
+            $("#btn2").click(function(){
+                 $("#d1").stop();
+            })
+        });
+
+        // $(document).ready(function(){
+        //     $("#btn2").click(function(){
+        //         $("#d1").stop();
+        //     })
+        // });
+    </script>
+</head>
+<body>
+    <div id="d1"></div><br><br><br><br><br><br><br><br>
+    <button id ="btn" type="button">Animate</button><br>
+    <button id="btn2">Stop</button>
+
+</body>
+</html>

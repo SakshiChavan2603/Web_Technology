@@ -1,0 +1,43 @@
+<!-- 6) apply the css to html elements with help of methods 
+
+	addClass()
+	removeClass()
+	toggleClass() -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 6</title>
+    <style>
+        .giveCSS{
+            background-color: aqua;
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <button id="id1" onclick="AddClass()">ADD class</button>
+    <button id="id2" onclick="RemoveClass()">Remove class</button>
+    <button id="id3" onclick="ToggleClass()">Toggle class</button><br><br>
+    <div id="div1"> </div>
+
+    <script>
+        function AddClass(){
+            $("#div1").addClass("giveCSS")
+        }
+
+        function RemoveClass(){
+            $("#div1").removeClass("giveCSS")
+        }
+
+        function ToggleClass(){
+            $("#div1").toggleClass("giveCSS")
+        }
+    </script>
+</body>
+</html>

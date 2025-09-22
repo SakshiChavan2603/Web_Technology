@@ -1,0 +1,22 @@
+<!-- Display Timer on Browser using callback function setInterval -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2</title>
+</head>
+<body>
+    <div>Timer: <p id="time">0</p></div>
+
+    <script>
+        let count = 0;
+        function updateTimer() {
+            count++;
+            document.getElementById('time').textContent = count;
+        }
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fade In / Fade Out Ad</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    #ad {
+      width: 300px;
+      height: 150px;
+      background-color: orange;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 10px;
+      margin: 20px auto;
+      display: none; /* Start hidden */
+      box-shadow: 0 0 10px #f90;
+      padding-top: 70px;
+    }
+    #btnDisappear {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 10px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="ad">Special Offer! Buy One Get One Free</div>
+<button id="btnDisappear">Disappear</button>
+
+<script>
+  $(document).ready(function() {
+    // Fade in the ad when the page loads
+    $("#ad").fadeIn(3000);
+
+    // Fade out the ad when button is clicked
+    $("#btnDisappear").click(function() {
+      $("#ad").fadeOut(3000);
+    });
+  });
+</script>
+
+</body>
+</html>

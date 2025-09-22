@@ -1,0 +1,45 @@
+<!-- Try the slideDown and slideUP APIs as discussed in class
+Check and use other methods in JQuery  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>jQuery Slide Example</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  #myElement {
+    display: none;
+    width: 200px;
+    height: 100px;
+    background: lightblue;
+    padding: 10px;
+  }
+</style>
+</head>
+<body>
+
+<button id="slideDownBtn">Slide Down</button>
+<button id="slideUpBtn">Slide Up</button>
+<button id="slideToggleBtn">Slide Toggle</button>
+
+<div id="myElement">Hello, I slide!</div>
+
+<script>
+  $(document).ready(function() {
+    $("#slideDownBtn").click(function() {
+      $("#myElement").slideDown(400);
+    });
+
+    $("#slideUpBtn").click(function() {
+      $("#myElement").slideUp(400);
+    });
+
+    $("#slideToggleBtn").click(function() {
+      $("#myElement").slideToggle(400);
+    });
+  });
+</script>
+
+</body>
+</html>

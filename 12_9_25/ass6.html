@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assignment 6</title>
+  <style>
+    table, th, td {
+      border: 2px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+      text-align: center;
+    }
+    .errormessage {
+      visibility: hidden;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="fn" name="fname" placeholder="Enter a First Name"><br><br>
+  <p class="errormessage">First Name must be given!</p>
+
+  <input type="text" id="ln" name="lname" placeholder="Enter a Last Name"><br><br>
+  <p class="errormessage">Last Name must be given!</p>
+
+  <input type="email" id="mail" name="Email" placeholder="Enter an Email"><br><br>
+  <p class="errormessage">Email must be given!</p>
+
+  <input type="date" id="dob" name="DOB"><br><br>
+  <p class="errormessage">DOB must be given!</p>
+
+  <button type="button" onclick="showTable()">Show Data</button><br><br>
+
+  <table id="tableArea"></table>
+
+  <script>
+    let isHeaderCreated = false;
+
+    function showTable() {
+      let Fname = document.getElementById("fn").value.trim();
+      let Lname = document.getElementById("ln").value.trim();
+      let Mail = document.getElementById("mail").value.trim();
+      let Dob = document.getElementById("dob").value.trim();
+
+      let isValid = true;
+      let errors = document.getElementsByClassName("errormessage");
+
+      if (Fname === "") {
+        errors[0].style.visibility = 'visible';
+        isValid = false;
+      } else {
+        errors[0].style.visibility = 'hidden';
+      }
+
+      if (Lname === "") {
+        errors[1].style.visibility = 'visible';
+        isValid = false;
+      } else {
+        errors[1].style.visibility = 'hidden';
+      }
+
+      if (Mail === "") {
+        errors[2].style.visibility = 'visible';
+        isValid = false;
+      } else {
+        errors[2].style.visibility = 'hidden';
+      }
+
+      if (Dob === "") {
+        errors[3].style.visibility = 'visible';
+        isValid = false;
+      } else {
+        errors[3].style.visibility = 'hidden';
+      }
+
+      if (!isValid) return;
+
+      let table = document.getElementById("tableArea");
+
+      // Add header only once
+      if (!isHeaderCreated) {
+        let header = table.insertRow();
+        header.innerHTML = `
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>DOB</th>
+          <th>Action</th>
+        `;
+        isHeaderCreated = true;
+      }
+
+      // Add new row
+      let row = table.insertRow();
+      row.innerHTML = `
+        <td>${Fname}</td>
+        <td>${Lname}</td>
+        <td>${Mail}</td>
+        <td>${Dob}</td>
+      `;
+
+
+      document.getElementById("fn").value = "";
+      document.getElementById("ln").value = "";
+      document.getElementById("mail").value = "";
+      document.getElementById("dob").value = "";
+    }
+  </script>
+</body>
+</html>

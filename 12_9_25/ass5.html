@@ -1,0 +1,48 @@
+<!-- 5) Accrpt Number from user and display table of that number in 
+   table format  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Table</title>
+   <style>
+      #tableArea{
+         border: 2px solid black;
+      }
+   </style>
+</head>
+<body>
+   Number:<input type="number" id="id1" name="no" placeholder="Enetre the number">
+   <button type="button" onclick="disTable()">Display Table</button>
+   <table id ="tableArea"></table>
+
+   <script>
+      function getInput(){
+         return parseInt(document.getElementById("id1").value.trim());
+      }
+      function disTable(){
+         let n = getInput();
+         let table = document.getElementById("tableArea");
+
+         table.innerHTML = " ";
+
+         if(isNaN(n)){
+            table.innerHTML = "<tr><td>Please Enter the Valid number</td></tr>";
+            return;
+         }
+
+         for(let i=1;i<=10;i++){
+            let row = `<tr>
+                        <td>${n}</td>
+                        <td>*</td>
+                        <td>${i}</td>
+                        <td>=</td>
+                        <td>${n*i}</td>
+                        </tr>`;
+            table.innerHTML += row;
+      }
+      }
+   </script>
+</body>
+</html>

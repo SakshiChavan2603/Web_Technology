@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Calculator</title>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 270px;
+    }
+
+    #display {
+      width: 100%;
+      height: 60px;
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: right;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      grid-gap: 10px;
+      justify-content: center;
+    }
+
+    button {
+      height: 60px;
+      font-size: 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #dcdcdc;
+    }
+
+    #equals {
+      grid-column: span 4;
+      background: #28a745;
+      color: #fff;
+    }
+
+    #equals:hover {
+      background: #218838;
+    }
+
+    #clear {
+      background: #dc3545;
+      color: #fff;
+    }
+
+    #clear:hover {
+      background: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <button class="btn" data-value="7">7</button>
+      <button class="btn" data-value="8">8</button>
+      <button class="btn" data-value="9">9</button>
+      <button class="btn" data-value="/">÷</button>
+
+      <button class="btn" data-value="4">4</button>
+      <button class="btn" data-value="5">5</button>
+      <button class="btn" data-value="6">6</button>
+      <button class="btn" data-value="*">×</button>
+
+      <button class="btn" data-value="1">1</button>
+      <button class="btn" data-value="2">2</button>
+      <button class="btn" data-value="3">3</button>
+      <button class="btn" data-value="-">−</button>
+
+      <button class="btn" data-value="0">0</button>
+      <button class="btn" data-value=".">.</button>
+      <button id="clear">C</button>
+      <button class="btn" data-value="+">+</button>
+
+      <button id="equals">=</button>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      let expression = "";
+
+      $(".btn").click(function () {
+        const value = $(this).data("value");
+        expression += value;
+        $("#display").val(expression);
+      });
+
+      $("#clear").click(function () {
+        expression = "";
+        $("#display").val("");
+      });
+
+      $("#equals").click(function () {
+        try {
+          const result = eval(expression);
+          $("#display").val(result);
+          expression = result.toString(); // enable chaining
+        } catch (e) {
+          $("#display").val("Error");
+          expression = "";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
