@@ -1,0 +1,44 @@
+<!-- 
+1)  accept 2 numbers from user 
+  and perform multiplication 
+  
+  using promise concept perform multiplication if both number 
+  are positive else reject the promise  -->
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multipliction</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    NUM1: <input id="id1" placeholder="Enter the num1">
+    NUM2: <input id="id2" placeholder="Enter the num2">
+    <button onclick="mul()">Multipliction</button>
+    <p id="p1"></p>
+
+    <script>
+      function mul(){
+      let n1 = document.getElementById("id1").value;
+      let n2 = document.getElementById("id2").value;
+      new Promise((resolve,reject)=>{
+        if(n1>0 && n2>0){
+          resolve(n1*n2);
+        }else{
+          reject("Number must be positive");
+        }
+      })
+      .then(result=>{
+        //alert("multiplication is = "+ result);
+        $("#p1").text(result);
+        
+      })
+      .catch(error=>{
+        alert(error);
+      });
+    }
+    </script>
+  </body>
+  </html>
