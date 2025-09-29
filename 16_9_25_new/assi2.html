@@ -1,0 +1,94 @@
+<!-- 2) create 2 div elements 
+    1 at left top corner and 2 nd at right top corner 
+	and add annimation effect with above call back functions -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2</title>
+    <style>
+        body{
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            background-color: rgb(75, 75, 105);
+            width: 150px;
+            height: 100;
+            position: absolute;
+            left: 20px;
+            display: flex;
+            margin-top: 10px;
+            justify-content: center;
+            padding-bottom: 50px;
+            padding-top: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }   
+
+        #div2{
+            background-color:rgb(75, 75, 105);
+            width: 150px;
+            height: 100;
+            position: absolute;
+            right: 10px;
+            display: flex;
+            margin-top: 10px;
+            justify-content: center;
+            padding-bottom: 50px;
+            padding-top: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="div1">
+    <span>Top left</span>
+    </div>
+
+    <div id="div2">
+        <span>Top right</span>
+    </div>
+
+    <script>
+        const div1 = document.getElementById("div1");
+        const div2 = document.getElementById("div2");
+
+        let leftPosition = 10;
+        let div1Top = 10;
+        let rightPosition = 10;
+        let div2Top = 10;
+
+        let step = 10;
+
+        // Animate div1 (moves right using setInterval)
+        const interval1 = setInterval(() => {
+            leftPosition += step;
+            div1Top+= step;
+            div1.style.left = leftPosition + "px";
+            div1.style.top = div1Top + "px";
+        }, 100);
+
+        // Animate div2 (moves left using setInterval)
+        const interval2 = setInterval(() => {
+            rightPosition += step;
+            div2Top+= step;
+            div2.style.right = rightPosition + "px";
+            div2.style.top = div1Top + "px";
+        }, 100);
+
+        // Stop the animation after 3 seconds using setTimeout and clearInterval
+        setTimeout(() => {
+            clearInterval(interval1);
+            clearInterval(interval2);
+            alert("Animation stopped after 3 seconds.");
+        }, 3000);
+    </script>
+    </script>
+</body>
+</html>
