@@ -9,13 +9,13 @@ import PasswordGenerator from './PasswordGenerator';
 function App() {
   return (
     <>
-    {/* <WithoutCallback></WithoutCallback>
-    <WithCallback></WithCallback> */}
+    {/* <WithoutCallback></WithoutCallback> */}
+    <WithCallback></WithCallback>
     {/* <ErrorBoundary>
       <Counter></Counter>
     </ErrorBoundary> */}
 
-    <PasswordGenerator></PasswordGenerator>
+    {/* <PasswordGenerator></PasswordGenerator> */}
     </>
     
   );

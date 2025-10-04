@@ -14,9 +14,9 @@ export default function WithCallback(){
         setCount(count-1),[count]
     )
 
-    //const incrementNum = useCallback(()=> setNum(num+1),[num]);
-    //const incrementNum = useCallback(()=> setNum(num+1),[]);
-    const incrementNum = useCallback(()=> setNum((prevnum)=>prevnum+1),[]);
+    //const incrementNum = useCallback(()=> setNum(num+1),[num]); // it create function again and angain on every render
+    //const incrementNum = useCallback(()=> setNum(num+1),[]); // it will create function only one time but you can increment 1 time only
+    const incrementNum = useCallback(()=> setNum((prevnum)=>prevnum+1),[]);  // it will create function only one time and stored in the cache memory and prev use it from the cache memory
 
 
 
