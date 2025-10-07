@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1: Data Entry (jQuery/AJAX Sim)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input { display: block; margin-bottom: 10px; padding: 8px; width: 200px; }
+        button { padding: 10px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>User Data Entry</h1>
+    <form id="dataForm">
+        First Name: <input type="text" id="fname" placeholder="Enter the first name" required><br>
+        Last Name: <input type="text" id="lname" placeholder="Enter the Last Name" required><br>
+        Age: <input type="number" id="age" placeholder="Enter the Age" required><br>
+        <button type="submit">Submit and View Data</button>
+    </form>
+    <p id="message" style="color: red;"></p>
+
+    <script>
+        $(document).ready(function() {
+            $('#dataForm').on('submit', function(event) {
+                event.preventDefault(); // Stop default form submission
+
+                const fname = $('#fname').val().trim();
+                const lname = $('#lname').val().trim();
+                const ageStr = $('#age').val().trim();
+                const $message = $('#message');
+                $message.text(''); // Clear previous messages
+
+                // --- 1. Validation ---
+                if (!fname || !lname || !ageStr) {
+                    $message.text('All fields are required.');
+                    return;
+                }
+
+                const age = parseInt(ageStr);
+                if (isNaN(age) || !Number.isInteger(age) || age <= 0) {
+                    $message.text('Age must be a positive integer.');
+                    return;
+                }
+                
+                if (fname.length < 2 || lname.length < 2) {
+                    $message.text('First and Last name must have at least 2 characters.');
+                    return;
+                }
+
+                // --- 2. Dynamic Username Creation ---
+                const firstPart = fname.slice(0, 2).toLowerCase();
+                const lastPart = lname.slice(-2).toLowerCase();
+                const username = firstPart + lastPart + age; // eg: Amit Patil 30 -> amil30
+
+                // --- 3. Store Data in Object and JSON Format ---
+                const dataObject = {
+                    First: fname,
+                    Last: lname,
+                    Age: age,
+                    UserName: username
+                };
+                
+                const JSONObj = JSON.stringify(dataObject);
+                console.log("JSON Data:", JSONObj);
+
+                // --- 4. AJAX (Simulated Processing) ---
+                // In a real application, this would send data to a server.
+                // Here, we use a timeout to simulate AJAX delay before redirecting.
+                $message.text('Processing data...');
+
+                setTimeout(() => {
+                    // Store the JSON data in sessionStorage before redirecting
+                    sessionStorage.setItem('userData', JSONObj);
+                    
+                    // Redirect to the display page
+                    window.location.href = 'display.html';
+                }, 500); // Simulate 0.5 second network delay
+            });
+        });
+    </script>
+</body>
+</html>
