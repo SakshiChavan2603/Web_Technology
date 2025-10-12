@@ -19,19 +19,17 @@ export default function Counter(){
 
     return(
         <>
-            Count: {count}
+            Count: {count} <br></br>
+
+            <button onClick={increment}>Increment</button><br></br>
 
             <button onClick={decrement}
             disabled = {count == 0}>Decrement
             </button><br></br>
 
-            <button onClick={increment}>Increment</button><br></br>
-
             <button onClick={reset}>Reset</button><br></br>
 
             
         </>
-
-
     );
 }

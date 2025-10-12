@@ -30,7 +30,7 @@ export default class Case extends Component{
 
     Lowercase = ()=>{
         console.log(this.state.text.toLowerCase());
-        this.setState({output: this.state.text.toLocaleLowerCase()});
+        this.setState({output: this.state.text.toLowerCase()});
     }
 
     render(){

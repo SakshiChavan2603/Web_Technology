@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 /**
@@ -49,7 +50,7 @@ function ListCreator() {
             {/* The Textarea Input Field */}
             <textarea
                 value={rawText}
-                onChange={handleTextChange}
+                onChange={handleTextChange}  //{(e)=>setRawText(e.target.value)}
                 onBlur={handleBlur} // <--- The target event!
                 placeholder="E.g., Apple, Banana, Cherry"
                 rows="5"
